@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ExitWise — Investor Business Plan v1 · 2026-04-24</title>
+<style>
+  :root {
+    --bg: #f7fbff;
+    --surface: #ffffff;
+    --ink: #0b2440;
+    --ink-2: #31537a;
+    --muted: #6b86a4;
+    --line: #dfeaf5;
+    --primary: #0a74da;
+    --primary-2: #1fa2ff;
+    --accent: #00c2a8;
+    --warm: #ff8a5b;
+    --gold: #f3b61a;
+    --danger: #e5484d;
+    --ok: #12a150;
+    --shadow: 0 12px 32px rgba(10, 60, 120, 0.08);
+    --shadow-lg: 0 24px 60px rgba(10, 60, 120, 0.12);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+    background: linear-gradient(180deg, #eaf4ff 0%, #f7fbff 20%, #ffffff 100%);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1080px; margin: 0 auto; padding: 48px 32px 96px; }
+  .hero {
+    background: linear-gradient(135deg, #0a74da 0%, #1fa2ff 55%, #00c2a8 100%);
+    color: #fff; border-radius: 28px; padding: 56px 48px;
+    position: relative; overflow: hidden;
+    box-shadow: var(--shadow-lg); margin-bottom: 48px;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(800px 400px at 90% -20%, rgba(255,255,255,0.25), transparent),
+      radial-gradient(600px 300px at -10% 120%, rgba(255,255,255,0.18), transparent);
+    pointer-events: none;
+  }
+  .hero .tag {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.32);
+    font-size: 12px; letter-spacing: 0.6px; margin-bottom: 20px; font-weight: 600;
+  }
+  .hero h1 { font-size: 42px; font-weight: 800; margin: 0 0 12px; letter-spacing: -0.5px; line-height: 1.2; }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, #fff 0%, #b9f5ff 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero p.sub { font-size: 18px; opacity: 0.92; max-width: 760px; margin: 0 0 28px; }
+  .hero-meta {
+    display: flex; gap: 24px; flex-wrap: wrap; font-size: 13px; opacity: 0.85;
+    border-top: 1px solid rgba(255,255,255,0.25); padding-top: 20px;
+  }
+  .hero-meta span b { opacity: 1; font-weight: 700; margin-right: 6px; }
+  section { margin: 48px 0; }
+  .section-head {
+    display: flex; align-items: baseline; gap: 14px;
+    margin-bottom: 24px; padding-bottom: 12px;
+    border-bottom: 2px solid var(--line);
+  }
+  .section-num {
+    font-size: 14px; font-weight: 700; color: var(--primary);
+    background: #e4f1ff; padding: 4px 10px; border-radius: 8px; letter-spacing: 0.3px;
+  }
+  .section-head h2 { font-size: 26px; font-weight: 800; margin: 0; letter-spacing: -0.3px; }
+  h3 { font-size: 19px; font-weight: 700; margin: 28px 0 12px; color: var(--ink); }
+  h4 { font-size: 16px; font-weight: 700; margin: 20px 0 8px; color: var(--ink-2); }
+  p { margin: 10px 0; color: var(--ink-2); }
+  strong { color: var(--ink); font-weight: 700; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 18px; padding: 24px 28px; box-shadow: var(--shadow);
+  }
+  .card + .card { margin-top: 16px; }
+  .grid { display: grid; gap: 16px; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 820px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+    .hero { padding: 40px 28px; }
+  }
+  .summary-list { list-style: none; padding: 0; margin: 0; }
+  .summary-list li {
+    padding: 14px 16px 14px 44px; position: relative;
+    background: #f3f9ff; border-radius: 12px; margin-bottom: 10px;
+    border-left: 3px solid var(--primary); color: var(--ink);
+  }
+  .summary-list li::before {
+    content: "▸"; position: absolute; left: 16px; top: 13px;
+    color: var(--primary); font-weight: 800;
+  }
+  .kpi {
+    background: linear-gradient(135deg, #f3f9ff 0%, #ffffff 100%);
+    border: 1px solid var(--line); border-radius: 16px; padding: 20px; text-align: center;
+  }
+  .kpi .label { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; }
+  .kpi .value { font-size: 24px; font-weight: 800; color: var(--primary); margin-top: 6px; }
+  .kpi .hint { font-size: 12px; color: var(--ink-2); margin-top: 4px; }
+  table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    background: #fff; border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--line); font-size: 14px;
+  }
+  th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: #eef6ff; color: var(--ink); font-weight: 700; font-size: 13px; letter-spacing: 0.2px; }
+  tr:last-child td { border-bottom: none; }
+  td strong { color: var(--primary); }
+  .callout {
+    background: linear-gradient(135deg, #fff8e6 0%, #fff 100%);
+    border-left: 4px solid var(--gold); border-radius: 10px;
+    padding: 16px 20px; margin: 20px 0; font-size: 15px; color: var(--ink);
+  }
+  .callout.primary { background: linear-gradient(135deg, #e4f1ff 0%, #fff 100%); border-left-color: var(--primary); }
+  .callout.accent { background: linear-gradient(135deg, #e6faf6 0%, #fff 100%); border-left-color: var(--accent); }
+  .callout b { display: block; margin-bottom: 4px; font-size: 13px; color: var(--muted); letter-spacing: 0.4px; text-transform: uppercase; }
+  .roadmap { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0; }
+  .roadmap-step {
+    flex: 1 1 140px; padding: 14px 16px; border-radius: 12px;
+    background: #fff; border: 1px solid var(--line); position: relative;
+  }
+  .roadmap-step.done { background: linear-gradient(135deg, #e6faf6 0%, #fff 100%); border-color: var(--accent); }
+  .roadmap-step.now {
+    background: linear-gradient(135deg, #fff3e6 0%, #fff 100%);
+    border-color: var(--warm); box-shadow: 0 0 0 3px rgba(255, 138, 91, 0.12);
+  }
+  .roadmap-step .name { font-weight: 700; font-size: 14px; color: var(--ink); }
+  .roadmap-step .time { font-size: 11px; color: var(--muted); margin-top: 2px; letter-spacing: 0.3px; text-transform: uppercase; font-weight: 600; }
+  .roadmap-step.done .time { color: var(--ok); }
+  .roadmap-step.now .time { color: var(--warm); }
+  .moat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  @media (max-width: 820px) { .moat-grid { grid-template-columns: 1fr; } }
+  .moat-card {
+    background: #fff; border-radius: 14px; padding: 18px 20px;
+    border: 1px solid var(--line); border-top: 3px solid var(--primary);
+  }
+  .moat-card:nth-child(2) { border-top-color: var(--accent); }
+  .moat-card:nth-child(3) { border-top-color: var(--warm); }
+  .moat-card:nth-child(4) { border-top-color: var(--gold); }
+  .moat-card .num { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.5px; }
+  .moat-card .title { font-size: 16px; font-weight: 700; margin: 4px 0 6px; color: var(--ink); }
+  .moat-card .desc { font-size: 13px; color: var(--ink-2); margin: 0; }
+  .team-card {
+    background: linear-gradient(135deg, #0a74da 0%, #00c2a8 100%);
+    color: #fff; border-radius: 20px; padding: 28px 32px; box-shadow: var(--shadow-lg);
+  }
+  .team-card .name { font-size: 22px; font-weight: 800; margin: 0 0 4px; }
+  .team-card .role { font-size: 13px; opacity: 0.9; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 16px; }
+  .team-card ul { margin: 0; padding-left: 20px; }
+  .team-card ul li { margin: 6px 0; opacity: 0.95; }
+  .team-card ul li b { font-weight: 700; }
+  .ask-row {
+    display: flex; align-items: center; gap: 16px; padding: 14px 18px;
+    background: #fff; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 10px;
+  }
+  .ask-row .pct { font-size: 22px; font-weight: 800; color: var(--primary); min-width: 60px; }
+  .ask-row .name { font-weight: 700; min-width: 180px; color: var(--ink); }
+  .ask-row .desc { color: var(--ink-2); font-size: 14px; flex: 1; }
+  .banner-final {
+    background: linear-gradient(135deg, #0b2440 0%, #0a74da 100%);
+    color: #fff; border-radius: 24px; padding: 44px 40px; text-align: center;
+    margin-top: 56px; box-shadow: var(--shadow-lg);
+  }
+  .banner-final .label { font-size: 12px; letter-spacing: 1.5px; opacity: 0.8; text-transform: uppercase; margin-bottom: 14px; }
+  .banner-final .msg { font-size: 22px; font-weight: 700; line-height: 1.5; max-width: 760px; margin: 0 auto; }
+  .banner-final .msg em {
+    font-style: normal;
+    background: linear-gradient(90deg, #b9f5ff 0%, #ffd89b 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  footer {
+    margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line);
+    font-size: 12px; color: var(--muted); text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <span class="tag">INVESTOR BRIEFING · 2026-04-24 · v1</span>
+    <h1>ExitWise — AI for the<br/><em>"Exit Spectrum"</em> of Commercial Real Estate</h1>
+    <p class="sub">As Korea, the United States, and China enter a synchronized downcycle, demand for exit liquidity — divestiture, NPL, workout, refinancing, M&amp;A — is expanding structurally. ExitWise is the only AI platform purpose-built for this white-space market.</p>
+    <div class="hero-meta">
+      <span><b>Stage</b>Phase 1 Complete · Phase 2 Launching</span>
+      <span><b>Tech</b>Next.js 14 · Claude · Supabase · SSE</span>
+      <span><b>Domains</b>exitwise.io · xwiseai.com</span>
+      <span><b>Founder</b>Peter Lee · 20yr Eng · 5 Patents</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head"><span class="section-num">01</span><h2>Executive Summary</h2></div>
+    <ul class="summary-list">
+      <li><strong>Timing</strong> — Project-financing defaults, NPL surge, and rising commercial vacancy are unfolding simultaneously across Korea, the US, and China. We are at the opening of a structural <strong>"exit liquidity"</strong> cycle.</li>
+      <li><strong>Positioning</strong> — Most domestic and global real-estate tech focuses on "acquisition and discovery." <strong>"Exit-focused AI" is effectively an empty market.</strong></li>
+      <li><strong>Product</strong> — Phase 1 (AI IM generator · SSE streaming · 4 templates · charts · PDF) is already live. Phase 2 expands across the full exit spectrum, starting with a dedicated NPL template.</li>
+      <li><strong>Moat</strong> — Exit-specific IP + founder credibility (20 years in software, 5 blockchain patents, licensed real-estate broker, certified investment manager) + integrated workflow (IM → DD → negotiation → deal room → experts).</li>
+      <li><strong>Revenue</strong> — SaaS subscription · per-unit fees · success-fee share · marketplace commissions · white-label. Per-IM gross margin <strong>95%+</strong>.</li>
+      <li><strong>Ask</strong> — Seed to Pre-Series A to fund NPL launch (4 weeks), full exit-spectrum expansion (6 months), and institutional sales.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">02</span><h2>Why Now — Market Timing</h2></div>
+
+    <h3>Domestic (Korea, 2026)</h3>
+    <table>
+      <thead><tr><th style="width:18%">Driver</th><th style="width:42%">Current State</th><th>Impact on Exit Demand</th></tr></thead>
+      <tbody>
+        <tr><td><strong>PF Loans</strong></td><td>Real-estate project-finance NPLs estimated at 15T KRW+, delinquency rising</td><td>Surge in divestiture and NPL listings</td></tr>
+        <tr><td><strong>NPL Market</strong></td><td>Annual NPL sales by financial institutions exceed 10T KRW, 3rd consecutive year of high growth</td><td>Structural rise in NPL IM demand</td></tr>
+        <tr><td><strong>Commercial Office</strong></td><td>B- and C-grade submarkets show vacancy above 15%</td><td>Holding pressure → divestiture and sale-leaseback pivots</td></tr>
+        <tr><td><strong>Higher-for-longer</strong></td><td>Policy rate plateau, LTV compression</td><td>Refinancing and restructuring demand</td></tr>
+        <tr><td><strong>Residential Lease</strong></td><td>Reverse-jeonse and underwater leases spreading</td><td>Residential-side exit demand emerges</td></tr>
+        <tr><td><strong>Trust Companies</strong></td><td>Capital-shortfall issues at select real-estate trusts</td><td>Demand for deal restructuring</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Global</h3>
+    <div class="grid grid-3" style="margin-top:12px">
+      <div class="kpi"><div class="label">USA · CRE Maturities</div><div class="value">$1.5T</div><div class="hint">2024–2026 cumulative wall</div></div>
+      <div class="kpi"><div class="label">China · Deleveraging</div><div class="value">Ongoing</div><div class="hint">Evergrande and Country Garden unresolved</div></div>
+      <div class="kpi"><div class="label">BIS · IMF Warning</div><div class="value">Top Risk</div><div class="hint">Global CRE repricing</div></div>
+    </div>
+
+    <div class="callout primary">
+      <b>INSIGHT</b>
+      Bull-market platforms are facing headwinds. "Exit-focused" platforms, by contrast, enjoy tailwinds. ExitWise's positioning — <strong>"Real estate matters most on the way out"</strong> — is a message that strengthens precisely when the cycle weakens.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">03</span><h2>Problem</h2></div>
+    <p>Exit-stage real-estate transactions are still executed the way they were in the 1990s — manually.</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <h4>IM production: 2–4 weeks · USD 4,000–15,000</h4>
+        <p>At Korean brokerage firms, a single IM still consumes weeks of analyst time at significant labor cost.</p>
+      </div>
+      <div class="card">
+        <h4>10+ data sources assembled by hand</h4>
+        <p>Appraisals, public-data APIs, DART, registry, central-bank data, mapping — all stitched together manually.</p>
+      </div>
+      <div class="card">
+        <h4>NPL and workout expertise is scarce</h4>
+        <p>Complex deals — especially in the mid-market — go untouched. Fertile ground for AI standardization.</p>
+      </div>
+      <div class="card">
+        <h4>Cross-border translation and reformat burden</h4>
+        <p>English, Chinese, and Japanese IMs require added cost and rework. No integrated domestic solution exists.</p>
+      </div>
+    </div>
+    <div class="callout accent">
+      <b>EFFECT</b>
+      With AI, this collapses to <strong>2–4 hours per IM</strong> and a per-unit cost below <strong>1/50 of manual production</strong>.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">04</span><h2>Solution — Product Architecture</h2></div>
+
+    <h3>Phase 1 · Already Shipped (✅)</h3>
+    <div class="grid grid-3">
+      <div class="card"><h4>AI IM Generator</h4><p>SSE streaming · 4 templates · Recharts auto-visualization · PDF export</p></div>
+      <div class="card"><h4>27 API routes</h4><p>generate-im · multi-agent · translate · share · experts · docs · analytics</p></div>
+      <div class="card"><h4>6 public-data integrations</h4><p>Registry · Road-address · ECOS · DART · VWorld · Kakao Maps</p></div>
+    </div>
+
+    <h3>Phase 2a · Dedicated NPL Template (4 weeks, top priority)</h3>
+    <p><strong>Why NPL leads</strong> — Demand is ramping most steeply, and the institutional buyers (UAMCO, Seoul AMC, savings banks, capital companies, P2P NPL platforms) are explicit and accessible B2B targets.</p>
+    <table>
+      <thead><tr><th>Block</th><th>Content</th><th>Reuse</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Debt Overview</strong></td><td>Principal · interest · penalties · fee structure</td><td>Claude system prompt</td></tr>
+        <tr><td><strong>Collateral Analysis</strong></td><td>Appraised value · senior/junior liens</td><td>Existing IM chart blocks</td></tr>
+        <tr><td><strong>Legal Status</strong></td><td>Auction stage · distribution · recovery priority</td><td>New block</td></tr>
+        <tr><td><strong>Recovery Scenarios</strong></td><td>Public auction · settlement · subrogation · DPO branches</td><td>Recharts</td></tr>
+        <tr><td><strong>IRR Model</strong></td><td>Sensitivity across discount rate and recovery period</td><td>Recharts + calculation engine</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px">Effort: 1wk design + 2wk prompt/blocks + 1wk QA = <strong>4 weeks</strong></p>
+
+    <h3>Phase 2b · Exit Spectrum Expansion (6 months)</h3>
+    <div class="roadmap">
+      <div class="roadmap-step done"><div class="name">Divestiture IM</div><div class="time">✅ Live</div></div>
+      <div class="roadmap-step now"><div class="name">NPL</div><div class="time">+4 weeks</div></div>
+      <div class="roadmap-step"><div class="name">Sale-Leaseback</div><div class="time">+6 weeks</div></div>
+      <div class="roadmap-step"><div class="name">Refinancing</div><div class="time">+8 weeks</div></div>
+      <div class="roadmap-step"><div class="name">Workout</div><div class="time">+10 weeks</div></div>
+      <div class="roadmap-step"><div class="name">M&amp;A · Equity</div><div class="time">+12 weeks</div></div>
+    </div>
+    <p style="font-size:13px;color:var(--muted)">All templates reuse the same SSE pipeline, block editor, and data connectors — marginal cost per new template drops sharply.</p>
+
+    <h3>Phase 3 · Design Complete</h3>
+    <div class="grid grid-4">
+      <div class="card"><h4>Deal Room</h4><p>Unified docs · Q&amp;A · timeline across sell-side, buy-side, and DD teams</p></div>
+      <div class="card"><h4>Listing Pages</h4><p>IM → public page · SEO inflow</p></div>
+      <div class="card"><h4>Expert Marketplace</h4><p>Appraisers · CPAs · lawyers · AMC operators — fee share</p></div>
+      <div class="card"><h4>Insight Community</h4><p>Data flywheel → proprietary market reports</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">05</span><h2>Market Size (Korea)</h2></div>
+    <div class="grid grid-3">
+      <div class="kpi"><div class="label">TAM · Total Market</div><div class="value">KRW 50–60T</div><div class="hint">Commercial transactions + NPL + advisory/brokerage fees</div></div>
+      <div class="kpi"><div class="label">SAM · AI-Addressable</div><div class="value">KRW 300–500B</div><div class="hint">Mid-to-large IM/DD/advisory</div></div>
+      <div class="kpi"><div class="label">SOM · Year 5 (5% share)</div><div class="value">KRW 15–25B ARR</div><div class="hint">ExitWise target share</div></div>
+    </div>
+    <div class="callout">
+      <b>CROSS-BORDER</b>
+      Extending into Southeast Asia and Japan adds 2–3× SAM; the 4-language translation layer is already on the Phase 2 roadmap.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">06</span><h2>Revenue Model &amp; Unit Economics</h2></div>
+    <table>
+      <thead><tr><th>Line</th><th>Customer</th><th>Pricing</th><th>Year-3 Mix</th></tr></thead>
+      <tbody>
+        <tr><td><strong>SaaS Subscription</strong></td><td>Brokerages · appraisers · AMCs</td><td>USD 250–2,500/month per seat</td><td>40%</td></tr>
+        <tr><td><strong>Per-Unit IM</strong></td><td>Mid-market brokers · solo advisors</td><td>USD 400–1,500 per IM</td><td>15%</td></tr>
+        <tr><td><strong>Success-Fee Share</strong></td><td>Closed-deal clients</td><td>0.1–0.3% of transaction value</td><td>25%</td></tr>
+        <tr><td><strong>Marketplace Commission</strong></td><td>Expert match transactions</td><td>10–15% of fee</td><td>10%</td></tr>
+        <tr><td><strong>White-Label · API</strong></td><td>Brokerages · capital cos · trusts · platforms</td><td>USD 100K–500K annual contracts</td><td>10%</td></tr>
+      </tbody>
+    </table>
+    <div class="grid grid-3" style="margin-top:18px">
+      <div class="kpi"><div class="label">Per-IM Cost</div><div class="value">USD 10–30</div><div class="hint">Model tokens + infra</div></div>
+      <div class="kpi"><div class="label">Per-IM Revenue</div><div class="value">USD 400–1,500</div><div class="hint">At unit pricing</div></div>
+      <div class="kpi"><div class="label">Gross Margin</div><div class="value">95%+</div><div class="hint">Well above typical SaaS</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">07</span><h2>Competitive Landscape &amp; Moat</h2></div>
+
+    <h3>Competitive Map</h3>
+    <table>
+      <thead><tr><th>Segment</th><th>Representative Players</th><th>ExitWise Differentiation</th></tr></thead>
+      <tbody>
+        <tr><td>Residential discovery</td><td>Zigbang · Dabang · Naver Real-Estate</td><td>Not focused on exit or commercial</td></tr>
+        <tr><td>Commercial discovery</td><td>Bootle · Disco · Valuemap</td><td>Discovery-only; no IM automation</td></tr>
+        <tr><td>Valuation</td><td>Valpick · Korea Appraisal Board</td><td>Single-metric tools; no workflow</td></tr>
+        <tr><td>NPL</td><td>UAMCO · Seoul AMC · P2P NPL</td><td>Traditional sales process; no AI</td></tr>
+        <tr><td>Overseas</td><td>Dealpath · Cherre · VTS</td><td>No Korean presence; localization gap</td></tr>
+      </tbody>
+    </table>
+    <div class="callout primary">
+      <b>CONCLUSION</b>
+      <strong>"AI for commercial-real-estate exits in Korea"</strong> is a clear white-space position.
+    </div>
+
+    <h3>Four-Layer Moat</h3>
+    <div class="moat-grid">
+      <div class="moat-card"><div class="num">MOAT 01</div><div class="title">Positioning</div><p class="desc">The "exit specialist" brand is difficult for late entrants to reclaim.</p></div>
+      <div class="moat-card"><div class="num">MOAT 02</div><div class="title">Technology</div><p class="desc">27 API routes, 6 public-data integrations, SSE pipeline, block editor, multi-agent — already built. 6–12 months for a competitor to replicate.</p></div>
+      <div class="moat-card"><div class="num">MOAT 03</div><div class="title">Trust</div><p class="desc">Founder holds licensed broker + certified investment-manager credentials, 20 years engineering, 5 blockchain patents.</p></div>
+      <div class="moat-card"><div class="num">MOAT 04</div><div class="title">Data</div><p class="desc">Accumulated IMs, DDs, and deal rooms compound into better matching, automated DD, and proprietary market intelligence.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">08</span><h2>Team</h2></div>
+    <div class="team-card">
+      <div class="role">Founder &amp; CEO</div>
+      <div class="name">Peter Lee</div>
+      <ul>
+        <li><b>20 years in software engineering</b> — founder of Axasoft</li>
+        <li><b>5 blockchain patents</b> — real-estate tokenization and DID foundations</li>
+        <li><b>Licensed Real-Estate Broker (Korea)</b> — operational fluency in deals</li>
+        <li><b>Certified Investment Manager</b> — capital-markets fluency</li>
+        <li>Rare founder profile combining real estate × finance × AI in the Korean market</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">09</span><h2>Current Traction</h2></div>
+    <div class="grid grid-3">
+      <div class="card"><h4>Phase 1 Shipped</h4><p>AI IM generator, 4 templates, stabilized SSE</p></div>
+      <div class="card"><h4>27 API Routes</h4><p>Production implementation complete</p></div>
+      <div class="card"><h4>Two Production Domains</h4><p>exitwise.io · xwiseai.com</p></div>
+      <div class="card"><h4>28 Dashboard Panels</h4><p>Deployed to production</p></div>
+      <div class="card"><h4>Pitchbook Redesign v3</h4><p>Brochure pipeline in-flight</p></div>
+      <div class="card"><h4>NPL Template Queued</h4><p>SEG07 /who2 landing live</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">10</span><h2>12-Month Milestones</h2></div>
+    <table>
+      <thead><tr><th>Quarter</th><th>Product</th><th>Go-to-Market</th><th>Metric Target</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Q2 2026</strong></td><td>NPL template · Pitchbook redesign</td><td>3 AMCs · 5 savings banks in PoC</td><td>10+ paying customers</td></tr>
+        <tr><td><strong>Q3 2026</strong></td><td>Sale-leaseback · Refinancing</td><td>Brokerage · capital-co white-label PoC</td><td>ARR USD 400K</td></tr>
+        <tr><td><strong>Q4 2026</strong></td><td>Deal Room · Expert marketplace beta</td><td>50 commercial brokerages signed</td><td>ARR USD 1.2M</td></tr>
+        <tr><td><strong>Q1 2027</strong></td><td>Workout · M&amp;A · 4-language translation</td><td>2 cross-border deals closed</td><td>ARR USD 2.5M</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">11</span><h2>Investment Ask — Use of Funds</h2></div>
+    <p style="margin-bottom:18px"><strong>Round</strong> — Seed to Pre-Series A · valuation and quantum to be discussed in meeting</p>
+    <div class="ask-row"><div class="pct">40%</div><div class="name">Product Development</div><div class="desc">NPL + 6 exit-spectrum templates, Deal Room, Expert Marketplace</div></div>
+    <div class="ask-row"><div class="pct">30%</div><div class="name">Institutional Sales</div><div class="desc">Dedicated B2B team for AMCs, savings banks, capital cos, trusts, brokerages</div></div>
+    <div class="ask-row"><div class="pct">15%</div><div class="name">Data &amp; Infrastructure</div><div class="desc">Paid public-data APIs · model tokens · infra scaling</div></div>
+    <div class="ask-row"><div class="pct">10%</div><div class="name">Legal &amp; Compliance</div><div class="desc">Capital Markets Act, EFT Act, privacy, additional patent filings</div></div>
+    <div class="ask-row"><div class="pct">5%</div><div class="name">Operations &amp; Buffer</div><div class="desc">General operating expenses</div></div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">12</span><h2>Risks &amp; Mitigation</h2></div>
+    <table>
+      <thead><tr><th style="width:35%">Risk</th><th>Mitigation</th></tr></thead>
+      <tbody>
+        <tr><td>Deal volume freeze</td><td>Exit spectrum includes NPL, workout, refinancing — demand rises precisely during freezes</td></tr>
+        <tr><td>Regulatory shifts</td><td>Founder's financial credentials + compliance advisory in place from day one</td></tr>
+        <tr><td>AI output quality</td><td>Expert review network · RAG pipeline · human-in-the-loop</td></tr>
+        <tr><td>Competitive entry</td><td>4-layer moat + long-term institutional contracts</td></tr>
+        <tr><td>Talent sourcing</td><td>Founder's 20-year engineering network · remote-first structure</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="banner-final">
+    <div class="label">MESSAGE FOR INVESTORS</div>
+    <div class="msg">The center of gravity in real estate is shifting<br/>from <em>"buying in"</em> to <em>"getting out."</em><br/><br/>ExitWise is the <em>only</em> AI platform positioned exclusively<br/>for that cycle.</div>
+  </div>
+
+  <footer>
+    Doc: 2026-04-24_ExitWise-Investor-Business-Plan_EN_v1 · Author: Peter Lee · Confidential
+  </footer>
+
+</div>
+<!-- ExitWise Home Button (injected) -->
+<style id="ew-home-btn-style">
+  #ew-home-btn{position:fixed;right:20px;bottom:20px;z-index:99999;display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,#0369A1 0%,#0EA5E9 60%,#38BDF8 100%);color:#fff;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 8px 28px rgba(3,105,161,.35),0 2px 6px rgba(0,0,0,.12);border:1px solid rgba(255,255,255,.25);font-family:-apple-system,'Inter','Apple SD Gothic Neo','Noto Sans KR',sans-serif;transition:transform .15s ease,box-shadow .15s ease,opacity .2s;backdrop-filter:saturate(180%) blur(8px)}
+  #ew-home-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(3,105,161,.45)}
+  #ew-home-btn:active{transform:translateY(0)}
+  #ew-home-btn .ew-ico{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;background:rgba(255,255,255,.18);font-size:13px;font-weight:900}
+  #ew-home-btn .ew-label{letter-spacing:-.01em}
+  @media (max-width:640px){#ew-home-btn{right:14px;bottom:14px;padding:10px 14px;font-size:13px}}
+</style>
+<a id="ew-home-btn" href="index.html" title="Investor Hub Home">
+  <span class="ew-ico">⌂</span>
+  <span class="ew-label">Home / 홈</span>
+</a>
+<script id="ew-home-btn-script">
+(function(){
+  try{
+    var btn=document.getElementById('ew-home-btn');
+    if(!btn) return;
+    // 1) If the URL has ?from=en, remember it
+    var qs=new URLSearchParams(location.search);
+    if(qs.get('from')==='en'){ try{sessionStorage.setItem('ew_lang','en')}catch(e){} }
+    if(qs.get('from')==='ko'){ try{sessionStorage.setItem('ew_lang','ko')}catch(e){} }
+    // 2) Else infer from document.referrer
+    var ref=document.referrer||'';
+    if(ref.indexOf('index_en.html')!==-1){ try{sessionStorage.setItem('ew_lang','en')}catch(e){} }
+    else if(ref.indexOf('index.html')!==-1){ try{sessionStorage.setItem('ew_lang','ko')}catch(e){} }
+    // 3) Fallback: page <html lang>
+    var lang='ko';
+    try{ lang=sessionStorage.getItem('ew_lang')||lang; }catch(e){}
+    if(!sessionStorageHas()){
+      var htmlLang=(document.documentElement.getAttribute('lang')||'').toLowerCase();
+      if(htmlLang.indexOf('en')===0) lang='en';
+    }
+    btn.setAttribute('href', lang==='en' ? 'index_en.html' : 'index.html');
+    function sessionStorageHas(){ try{return !!sessionStorage.getItem('ew_lang')}catch(e){return false} }
+  }catch(e){}
+})();
+</script>
+
+<!-- ExitWise Doc Lang Switcher (injected) -->
+<style id="ew-doc-lang-style">
+  #ew-doc-lang{
+    position:fixed;top:20px;right:20px;z-index:99998;
+    display:inline-flex;align-items:center;gap:6px;
+    padding:6px 8px;border-radius:999px;
+    background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);
+    border:1px solid #E2E8F0;box-shadow:0 8px 24px rgba(15,23,42,.12);
+    font-family:-apple-system,'Inter','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  }
+  #ew-doc-lang .ew-dl-label{
+    font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:#64748B;padding:0 8px 0 4px;border-right:1px solid #E2E8F0;margin-right:2px;
+  }
+  #ew-doc-lang a, #ew-doc-lang span.dis{
+    display:inline-flex;align-items:center;gap:4px;
+    padding:6px 11px;border-radius:999px;font-size:12.5px;font-weight:700;
+    color:#475569;text-decoration:none;transition:.15s;cursor:pointer;
+  }
+  #ew-doc-lang a:hover{color:#0369A1;background:#E0F2FE}
+  #ew-doc-lang a.active{background:linear-gradient(135deg,#0369A1,#0EA5E9);color:#fff;box-shadow:0 2px 6px rgba(3,105,161,.3);cursor:default}
+  #ew-doc-lang span.dis{color:#CBD5E1;cursor:not-allowed;text-decoration:line-through}
+  @media (max-width:640px){
+    #ew-doc-lang{top:12px;right:12px;padding:4px 6px}
+    #ew-doc-lang .ew-dl-label{display:none}
+    #ew-doc-lang a, #ew-doc-lang span.dis{padding:5px 9px;font-size:11.5px}
+  }
+</style>
+<div id="ew-doc-lang" role="navigation" aria-label="Document language"></div>
+<script id="ew-doc-lang-script">
+(function(){
+  // Group → language → file
+  var GROUPS = {
+    "biz":  { label:"Business Plan",
+              files:{ ko:"bizko.html", en:"bizvet.html" } },
+    "fund": { label:"Use of Funds",
+              files:{ ko:"fundko.html", en:"funden.html", vi:"fundvet.html" } },
+    "brief":{ label:"Investor Brief",
+              files:{ ko:"2026-04-24_ExitWise-Investor-Business-Plan_v1.html",
+                      en:"2026-04-24_ExitWise-Investor-Business-Plan_EN_v1.html",
+                      vi:"2026-04-24_ExitWise-Investor-Business-Plan_VN_v1.html" } }
+  };
+  // Map filename → {group, lang}
+  var MAP = {
+    "bizko.html":                                                                  {g:"biz",  l:"ko"},
+    "bizvet.html":                                                                 {g:"biz",  l:"en"},
+    "2026-04-03_사업계획서_BUSINESS_PLAN_v1.html":                                 {g:"biz",  l:"ko"},
+    "fundko.html":                                                                 {g:"fund", l:"ko"},
+    "funden.html":                                                                 {g:"fund", l:"en"},
+    "fundvet.html":                                                                {g:"fund", l:"vi"},
+    "2026-04-03_투자금_사용계획서_USE_OF_FUNDS_v1_ko.html":                         {g:"fund", l:"ko"},
+    "2026-04-24_ExitWise-Investor-Business-Plan_v1.html":                          {g:"brief",l:"ko"},
+    "2026-04-24_ExitWise-Investor-Business-Plan_EN_v1.html":                       {g:"brief",l:"en"},
+    "2026-04-24_ExitWise-Investor-Business-Plan_VN_v1.html":                       {g:"brief",l:"vi"}
+  };
+  var ORDER = ["ko","en","vi"];
+  var FLAGS = {ko:"🇰🇷", en:"🇺🇸", vi:"🇻🇳"};
+  var NAMES = {ko:"한국어", en:"English", vi:"Tiếng Việt"};
+
+  try{
+    var fname = decodeURIComponent(location.pathname.split("/").pop());
+    var meta = MAP[fname];
+    var host = document.getElementById("ew-doc-lang");
+    if(!meta || !host){ if(host) host.style.display="none"; return; }
+    var grp = GROUPS[meta.g];
+    var html = '<span class="ew-dl-label">'+grp.label+'</span>';
+    ORDER.forEach(function(lang){
+      var target = grp.files[lang];
+      if(target){
+        if(lang===meta.l){
+          html += '<a class="active" aria-current="page" href="#" onclick="return false">'+FLAGS[lang]+' '+NAMES[lang]+'</a>';
+        }else{
+          html += '<a href="'+target+'" title="'+NAMES[lang]+'">'+FLAGS[lang]+' '+NAMES[lang]+'</a>';
+        }
+      }else{
+        html += '<span class="dis" title="Not yet available">'+FLAGS[lang]+' '+NAMES[lang]+'</span>';
+      }
+    });
+    host.innerHTML = html;
+  }catch(e){}
+})();
+</script>
+
+</body>
+</html>
